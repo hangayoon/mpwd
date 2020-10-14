@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+    <title>hy by hy</title>
+    
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i'" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
+    <link href="css/loading.css" rel="stylesheet" type="text/css">
+    <style>
+	/* reset */
+* {margin:0; padding:0; font-family: 'Lato';}
+li {list-style: none;}
+a {text-decoration: none;}
+/*han-nav */
+#han-nav {position: absolute; left: 0; top:788px; width: 100%; height: 50px; z-index: 1000; background-color: rgba(0,0,0,0.5);}
+#han-nav.on {position: fixed; top: 0;}
+#han-nav h1 {color: #fff; font-size: 40px; padding: 5px 5px 5px 15px;}
+h1{display: block;height:88px; position:relative; z-index:100; bottom:5%; cursor: pointer; }
+h1 .rightBox{width: 100%; height: 100%; display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+			}
+h1 .rightBox img{height: 100%;}
+h1 .rightBox > div:first-of-type{margin-left:10px;  width:38px;}
+h1 .rightBox > div:nth-child(2){width:64px; animation: hyName 11s infinite linear; animation-timing-function:ease-in-out; transform: translateX(-10px);}
+    @keyframes hyName {
+        0% {width:0px; display: none;overflow: hidden;}
+        25%{width: 0px; transition:0.1s;overflow: hidden;}
+        50% {width:64px;  transition:0.5s;}
+        75%{width: 0px; transition:0.1s;overflow: hidden;}
+        100%{width: 0px; overflow: hidden;}
+    }
+h1 .rightBox > div:nth-of-type(3){width:20px; animation: hyName01 11s infinite linear; animation-timing-function:ease-in-out; transform: translateX(-26px);}
+    @keyframes hyName01 {
+        0% {}
+        50% {width:42px;}
+        100% {}
+    }
+h1 .rightBox > div:last-of-type{ margin-top:10px; animation: hyName02 11s infinite linear; animation-timing-function:ease-in-out; transform:translateX(-42px);}
+    @keyframes hyName02 {
+        0% {width:0px; display: none;overflow: hidden;}
+        25%{width: 0px; transition:0.1s;overflow: hidden;}
+        50% {width:64px;  transition:0.5s;}
+        75%{width: 0px; transition:0.1s;overflow: hidden;}
+        100%{width: 0px; overflow: hidden;}
+    }
+h1 .rAside{position: fixed; background:#b3b3b3;width:292px; height:160px; border-radius:20px 0px 0px 20px;
+             right: -282px;
+             display: block; bottom:140px;}
+h1 .rAside i.fas{font-size:30px; position: fixed;right: 5px;bottom:150px; background:#b3b3b3; width:20px; height:42px; line-height: 42px; padding-left:8px; border-radius:15px 0px 0px 15px; color: #fff; transition:0.5s;}
+h1 .rAside a{ display:block; font-weight: bold; font-size:16px; text-transform:capitalize; margin-left:10px; line-height:30px; color: #fff;}
+h1 .rAside a:first-child{margin-top:16px;}
+/*.slide::after, .slide::before{display: block;clear: both; content:"";}*/
+        #han-nav{display:flex;}
+        #han-nav h1{width: 20%; margin:0px auto;}
+#han-nav .menu { padding-right: 10px; }
+#han-nav .menu li {display: inline; }
+#han-nav .menu li a {display: inline-block; padding: 20px 15px; color: #fff; font-weight: bold; font-family: 'Abel'; text-transform: capitalize;}
+#han-nav .menu li.active a {color: #111;}
+#han-nav .mNav {display: none; position: absolute; top: 7px; right: 10px; width: 65px; height: 45px; cursor: pointer;/*background-color: rgba(255,255,255,0.3);*/}
+
+/* dot */
+#dot {position: fixed; right: 20px; top:50%; z-index: 10; transform: translatey(-50%);}
+#dot li {
+    position: relative;
+    width: 20px; height: 20px; border-radius:50%; 
+    box-shadow: 0 0 0 2px rgba(255,255,255,0);
+    margin: 8px;
+    transition: box-shadow 0.3s ease;
+}
+#dot li a { 
+    background-color: rgba(255,255,255,0.7);
+    width: 100%; height: 100%;
+    position: absolute; top:0; left: 0;
+    border-radius: 50%;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+#dot li.active {box-shadow: 0 0 0 2px rgba(255,255,255,1);}
+#dot li.active a {transform: scale(0.4);}
+#dot li a em {display: none;}   
+
+/* contents */
+#contents {text-align: center; color: #fff;}
+#contents > div {height: 100vh; display: flex; justify-content : center; align-items : center;}
+#contents > div h2 {font-size: 70px; font-weight: 200; text-transform: uppercase;}
+#contents > div h2 strong {font-weight: 700; font-style: italic;}
+
+/* section */
+#section1 {background:radial-gradient(ellipse farthest-corner at center bottom, #000000, #595959);}        
+.slide{width:100%;height:884px;margin:0px auto;position: relative; left: 0px; border:1px solid #fff;}
+/*.slide h2{text-align: center; color: #fff; text-transform:uppercase; width: 100%; height: 40px; line-height: 40px; background: #4d0000;}*/
+.slide > .sWrap{width:1200px;margin:0px auto;}
+.slideInner{width:6000px;}
+.slide > .sWrap .slideInner div{width:1200px; float: left;}
+.slideInner a{}
+.slideInner div img{width:1200px;float: left;}
+.slideBtn i.fas{position: absolute; top:46%; font-size:40px; z-index: 1000; color: #fff; background: rgba(0, 0, 0, 0.7);border-radius:50%; cursor: pointer;}
+.slideBtn i.fa-angle-left{left:10%; text-indent:-3px; padding:3px 15px;}
+.slideBtn i.fa-angle-right{right:10%; padding:3px 12px; text-indent:3px;}
+        
+
+#section2 {background:radial-gradient(ellipse farthest-corner at center bottom, #fff, #bfbfbf);}
+        #csspage{width:120vh; height:80vh; border:1px solid #f00;}
+        .cssEvt01{widows:10vh; border:1px solid #ff0;}
+        .cssEvt01 span{}
+        .cssEvt01 span:first-child{}
+        .cssEvt01 span:nth-child(2){}
+        .cssEvt01 span:last-child{}
+        .cssEvt02{}
+        .cssEvt02 span{}
+        .cssEvt02 span:first-child{}
+        .cssEvt02 span:nth-child(2){}
+        .cssEvt02 span:last-child{}
+        
+#section6 {background:radial-gradient(ellipse farthest-corner at center top, #FBB03B, #D4145A);}
+#section3 {background:radial-gradient(ellipse farthest-corner at center top, #A3A1FF, #3A3897);}
+#section4 {background:radial-gradient(ellipse farthest-corner at center top, #29ABE2, #4F00BC);}
+#section5 {background:radial-gradient(ellipse farthest-corner at center top, #FF5300, #45145A);}
+/* text animation */
+#contents > div h2 {transition: all 0.6s ease-in-out;}
+#section1 h2 {opacity: 0; transform: translate(0,0);}
+#section2 h2 {opacity: 0;}
+#section3 h2 {opacity: 0; transform: translate(-20%,0);}
+#section4 h2 {opacity: 0; transform: translate(10%,0);}
+#section5 h2 {opacity: 0; transform: rotate(45deg);}
+#section6 h2 {opacity: 0; transform: skew(90deg);}
+#contents > div.show h2 {transform: none;}
+#section1.show h2 {opacity: 1;}
+#section2.show h2 {opacity: 1; color: #606060;}
+#section3.show h2 {opacity: 1;}
+#section4.show h2 {opacity: 1;}
+#section5.show h2 {opacity: 1;}
+#section6.show h2 {opacity: 1;}
+			#section1 > div{width:100%; overflow:hidden;}
+        #section1 > div::after{content:""; display:block; height:200px;}
+			#section2 > div::after, #section4 > div::after, #section6 > div::after{content: ""; display:block; height:400px;}
+        
+ main{ position:relative; width:100%; height:900px; overflow-y:hidden;z-index:1; background:#000;}
+.mInner{width:78%; margin:100px auto; border:1px solid #f00;
+    display:flex;
+        }
+.mInner > .mTextbox{}
+.mInner > .mTextbox p:first-child, .mInner > .rmTextbox p:first-child{color: #fff;font-size:30px;}
+.mInner > .mTextbox p:last-child, .mInner > .rmTextbox p:last-child{color:#d9d9d9;font-size:22px; line-height:48px; margin-top:6px;}
+.mInner > .mTextbox span{ animation:under 1s infinite linear; animation-timing-function: ease-in; transition:1s; display: inline-block;}
+        @keyframes under{
+            0%{color: #333;}
+            50%{color: #fff;}
+            100%{color: #333;}
+        }
+.mInner > .rmTextbox{ 
+    border:1px solid #ff0;
+    align-self: flex-end;
+    width:360px;
+/*    display:flex;
+    flex-direction:column; 
+    justify-content:flex-end;
+     align-items: flex-end;*/
+        }
+        /* 
+        얼라인이 축의 수직
+        저스티파이가 축의 방향
+        */
+.mInner > .rmTextbox p:last-child{font-size:24px;}
+.mInner > .rmTextbox span{animation:under 1s infinite linear;}
+.mInner .mImg{width:400px; margin:0px auto;}
+.mInner > .mImg > img{width:300px; position:relative; display:inline-block; opacity:0.1;}
+.mInner > .mImg > img:first-child{width:126px; position: absolute; top:80%; left:39%;
+        }
+.mInner > .mImg > img:nth-child(2){width:254px;
+         position: absolute; right:46.5%; opacity: 0.8; top:20%;}
+.mInner > .mImg > img:last-child{left:10%;}
+	</style>
+</head>
+<body>
+   <div id="load">
+       <div class="loading">
+           <p>loading<span>...</span></p>
+       </div>
+   </div>
+    <nav id="han-nav">
+        <h1>
+             <a href="today1012_01.html" title="메인으로가기">
+              <div class="rightBox">
+              <div><img src="./imgwokr/logo_hwh_01.png" alt="logoH"></div>
+              <div><img src="./imgwokr/logo_hwh_02.png" alt="logoH"></div>
+              <div><img src="./imgwokr/logo_hwh_03.png" alt="logoH"></div>
+              <div><img src="./imgwokr/logo_hwh_04.png" alt="logoH"></div>
+          </div>
+          <div class="rAside">
+          <i class="fas fa-angle-left"></i>
+                 <div>
+                  <a href="#none" title="">
+                  <img src="" alt="">홈페이지보러가기</a>
+                  <a href="#none" title="">
+                  <img src="" alt="">디자인보러가기</a>
+                  <a href="#none" title="">
+                  <img src="" alt="">포트폴리오보러가기</a>
+                  <a href="#none" title="">
+                  <img src="" alt="">about us</a>
+              </div>
+          </div></a></h1>
+        <div class="mNav">
+            <div class="icon-wrap">
+                <div class="icon"></div>
+            </div>
+        </div>
+
+        <ul class="menu">
+            <li class="active"><a href="#section1">hY by HY</a></li>
+            <li><a href="#section2">UI/UX</a></li>
+            <li><a href="#section3">CSS</a></li>
+            <li><a href="#section4">script</a></li>
+            <li><a href="#section5">Design</a></li>
+            <li><a href="#section6">all my port</a></li>
+        </ul>   
+    </nav>
+    
+    <div id="dot">
+        <ul>
+            <li class="active"><a href="#"><em>menu1</em></a></li>
+            <li><a href="#"><em>menu2</em></a></li>
+            <li><a href="#"><em>menu3</em></a></li>
+            <li><a href="#"><em>menu4</em></a></li>
+            <li><a href="#"><em>menu5</em></a></li>
+            <li><a href="#"><em>menu6</em></a></li>
+        </ul>
+    </div>
+ <aside> 
+         
+      </aside>
+     
+   
+   <main>
+                <div class="main">
+            <div class="mInner">
+               <div class="mTextbox">
+                   <p>Nice to meet you</p>
+                   <p>Wellcome to my Portfolio<br>
+                   My name is hy,<br>
+                   han of H and<br>
+                   It's Y from Gayoon<br>
+                   Thank you<span>_</span>
+                   </p>
+               </div>
+                <div class="mImg">
+                    <img src="./imgwokr/main_04.png" alt="han">
+                    <img src="./imgwokr/main_02.png" alt="ga">
+                    <img src="./imgwokr/main_03.png" alt="yoon">
+                </div>
+                <div class="rmTextbox">
+                    <p>I can accommodate everything</p>
+                    <p>My colors are very diverse<br>
+                    Look carefully from now on!<span>_</span></p>
+                </div>
+<script>
+</script>
+            </div>
+        </div>
+            </main>
+    <div id="contents">
+        <div id="section1">
+            <div>
+<!--                <h2><strong>holy!</strong><br>힘드러</h2>-->
+           <div><div class="slide">
+          <h2>~2020&nbsp;&nbsp;&nbsp;project</h2>
+          <div class="sWrap">
+           <div class="slideInner">
+              <div>
+                  <a href="#none" title="work01">
+                   <img src="./imgTest/test01.jpg" alt="">
+                  </a>
+              </div>
+              <div>
+                  <a href="#none" title="work02">
+                   <img src="./imgTest/test02.jpg" alt="">
+                  </a>
+              </div>
+              <div>
+                  <a href="#none" title="work03">
+                   <img src="./imgTest/test03.jpg" alt="">
+                  </a>
+              </div>
+              <div>
+                  <a href="#none" title="work04">
+                   <img src="./imgTest/test04.jpg" alt="">
+                  </a>
+              </div>
+              <div>
+                  <a href="#none" title="work05">
+                   <img src="./imgTest/test05.jpg" alt="">
+                  </a>
+              </div>
+           </div>
+           <div class="slideBtn">
+               <i class="fas fa-angle-left"></i>
+               <i class="fas fa-angle-right"></i> 
+           </div>
+           </div>
+           </div>
+        </div> 
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+           <script>
+               $(function(){        
+/*  .slide > .sWrap > .slideInner div img  */
+    let s_wi = $('.slideInner div').width();
+    $('.slideInner div:last-child').insertBefore('.slideInner div:first-child');
+     $('.slideInner').css({marginLeft:-s_wi});
+    
+    
+               let num = 0;
+    function s_moveLeft(){
+        $('.slideInner').stop().animate({marginLeft:-s_wi*2
+                             },500,function(){
+             $('.slideInner div:first-child').insertAfter('.slideInner div:last-child');
+  
+            
+            $('.slideInner').css({marginLeft:-s_wi});
+        });
+    }
+    let sTimer = setInterval(s_moveLeft,3000);
+    
+    function s_moveRight(){
+        $('.slideInner').stop().animate({marginLeft:-s_wi*0
+                             },500,function(){
+            $('.slideInner div:last-child').insertBefore('.slideInner div:first-child');
+            
+            $('.slideInner').css({marginLeft:-s_wi});
+        });
+         
+    }
+    let s_lbtn = $('.slideBtn i.fa-angle-left');
+    let s_rbtn = $('.slideBtn i.fa-angle-right');
+    
+    s_lbtn.click(function(){
+        clearInterval(sTimer);
+        s_moveRight();
+        });
+
+         s_rbtn.click(function(){
+            clearInterval(sTimer);
+            s_moveLeft();
+        });
+
+        $('.slideBtn i.fas').mouseleave(function(){
+            sTimer = setInterval(s_moveLeft,3000);
+        });
+                   
+    });   
+           </script>
+           
+            </div>
+        
+        </div>
+        
+		<div id="section2">
+            <div id="csspage">
+                <h2>only <strong>css</strong> animate!</h2>
+                <div class="cssEvt01">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="cssEvt01">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+			<div id="section3"><div><h2><strong>holy!</strong><br>홀리..</h2></div></div>
+			<div id="section4"><div><h2><strong>holy!</strong><br>시계는<br>와치</h2></div></div>
+			<div id="section5"><div><h2>holy! <strong>day!</strong><br>하기 싫은<strong>겅부</strong></h2></div></div>
+			<div id="section6"><div><h2><strong>holy!</strong> 삶은달걀 <br>맛있다.</h2></div></div>
+    </div>
+    
+    
+
+    <script>
+        $(function(){
+    let main01 = $('.mImg > img:first-child') 
+    let main02 = $('.mImg > img:nth-child(2)') 
+    let main03 = $('.mImg > img:last-child')
+    main01.animate({opacity:'1'},2000).animate({top:'18%',left:'40.8%'},3000);
+     main02.animate({opacity:'1'},2000).animate({top:'30%',height:'1%'},3000);
+    main03.animate({opacity:'0.3'},2000).animate({left:'100px',opacity:'0.8'},2000).animate({left:'0px',opacity:'0.7'},1000);
+                });
+
+			 $(function(){
+        let $section = $('#contents > div > div'),
+            $sectionInfo =[];
+        $section.each(function(){
+           let $this = $(this);
+            $sectionInfo.push($this.offset().top);
+        });
+        console.log($sectionInfo);
+        $section.css({position:'relative'});
+        
+        $(window).scroll(function(){
+            let sct = $(this).scrollTop();
+            $section.each(function(idx){
+               let $this = $(this);
+                let $newtop = $sectionInfo[idx] - sct;
+                    if(sct > $sectionInfo[idx]){
+                        $newtop *= 0.5;
+                       }         
+                    $this.css({top:$newtop});
+            });
+        });
+//        
+//    });
+        let dot = $("#dot > ul > li");
+				let hNav = $("#han-nav ul li");
+        let cont = $("#contents > div");
+			
+        $('#dot > ul > li , #han-nav ul li').click(function(e){
+            e.preventDefault();
+            let target = $(this);
+            let index = target.index();
+            //alert(index);
+            let section = cont.eq(index);
+            let offset = section.offset().top;
+            $("html,body").animate({scrollTop:offset},600,"easeInOutExpo");
+        });
+			
+			//
+			 $("#han-nav").each(function(){
+            let header = $(this);
+            let headerOffset = header.offset().top;
+
+            $(window).scroll(function(){
+                let wScroll = $(this).scrollTop();
+                if(wScroll > headerOffset){
+                        header.addClass("on");
+                } else {
+                    header.removeClass("on");
+                }
+            });
+        });
+        ;
+			
+        $(window).scroll(function(){
+            let wScroll = $(this).scrollTop();
+            if(wScroll >= cont.eq(0).offset().top){
+                $('#dot > ul > li , #han-nav ul li').removeClass("active");
+                $('#dot > ul > li').eq(0).addClass("active");
+                $('#han-nav ul li').eq(0).addClass("active");
+            }
+            if(wScroll >= cont.eq(1).offset().top){
+                $('#dot > ul > li , #han-nav ul li').removeClass("active");
+                $('#dot > ul > li').eq(1).addClass("active");
+                $('#han-nav ul li').eq(1).addClass("active");
+            }
+            if(wScroll >= cont.eq(2).offset().top){
+                $('#dot > ul > li , #han-nav ul li').removeClass("active");
+                $('#dot > ul > li').eq(2).addClass("active");
+                $('#han-nav ul li').eq(2).addClass("active");
+            }
+            if(wScroll >= cont.eq(3).offset().top){
+                $('#dot > ul > li , #han-nav ul li').removeClass("active");
+                $('#dot > ul > li').eq(3).addClass("active");
+                $('#han-nav ul li').eq(3).addClass("active");
+            }
+            if(wScroll >= cont.eq(4).offset().top){
+                $('#dot > ul > li , #han-nav ul li').removeClass("active");
+                $('#dot > ul > li').eq(4).addClass("active");
+                $('#han-nav ul li').eq(4).addClass("active");
+            }
+            if(wScroll >= cont.eq(5).offset().top){
+                $('#dot > ul > li , #han-nav ul li').removeClass("active");
+                $('#dot > ul > li').eq(5).addClass("active");
+                $('#han-nav ul li').eq(5).addClass("active");
+            }
+            
+            //Text Animation
+            if(wScroll >= cont.eq(0).offset().top - $(window).height() ){
+                cont.eq(0).addClass("show");
+            }
+            if(wScroll >= cont.eq(1).offset().top - $(window).height()/3 ){
+                cont.eq(1).addClass("show");
+            }
+            if(wScroll >= cont.eq(2).offset().top - $(window).height()/3 ){
+                cont.eq(2).addClass("show");
+            }
+            if(wScroll >= cont.eq(3).offset().top - $(window).height()/3 ){
+                cont.eq(3).addClass("show");
+            }
+            if(wScroll >= cont.eq(4).offset().top - $(window).height()/3 ){
+                cont.eq(4).addClass("show");
+            }
+            if(wScroll >= cont.eq(5).offset().top - $(window).height()/3 ){
+                cont.eq(5).addClass("show");
+            }            
+        });
+				 
+				 
+			 });
+    </script>
+
+
+</body>
+</html>
